@@ -1,0 +1,7 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * sample one in 100 page faults, and record the process name
+ */
+
+software:page-faults:100 { @[comm] = count(); }

@@ -1,0 +1,2 @@
+#!/usr/bin/env bpftrace
+BEGIN { printf("hello world (CTRL-C to exit)\n"); }

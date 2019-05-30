@@ -1,0 +1,13 @@
+#!/usr/bin/env bpftrace
+
+
+/*
+  From read(2):
+    ssize_t read(int fd, void *buf, size_t count)
+  arg2 is 'count' - the num bytes read.
+
+  So this reports reads that are less than 16 bytes.
+*/
+kprobe:vfs_read /arg2 < 16/ {
+  printf("small read: %d byte buffer\n", arg2);
+}
